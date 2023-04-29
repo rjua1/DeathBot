@@ -31,14 +31,14 @@ int deathInt1 = 72;         ///hours to send 1st death message
 int deathInt2 = 12;         ///hours to send 2nd death message to everytone
 
 //------- WiFi Settings (change these) -------
-char ssid[] = "girl's club";          // your network SSID (name)
-char password[] = "foreversMy4ever";  // your network key
+char ssid[] = "";          // your network SSID (name)
+char password[] = "";  // your network key
 
 
 // ------- Telegram config (change these)--------
-#define BOT_TOKEN "5920036574:AAHITrnD3EsVgj80yVwEgHsxNgos1MywEsI"  // your Bot Token (Get from Botfather)
-#define CHAT_ID "5983360667"                                        // Chat ID of where you want the message to go (You can use MyIdBot to get the chat ID)
-#define DEAD_CHAT_ID "-880319725"                                   // group chat for the 2nd death message
+#define BOT_TOKEN ""  // your Bot Token (Get from Botfather)
+#define CHAT_ID ""                                        // Chat ID of where you want the message to go (You can use MyIdBot to get the chat ID)
+#define DEAD_CHAT_ID ""                                   // group chat for the 2nd death message
 #include <ArduinoJson.h>
 
 //end of changing things... There's more though in telegram functions.
@@ -205,7 +205,7 @@ void sendTelegramMessage() {
       Serial.println("TELEGRAM Successfully sent");
     }
     message = "";
-    message.concat("Someone may want to check on Michelle. It's been  " + String(millisToHours(timer[0] + timer[1])) + " hours since movement was last detected.");
+    message.concat("Go check on Michelle, she might be dead. It's been  " + String(millisToHours(timer[0] + timer[1])) + " hours since something moved at home.");
     if (bot.sendMessage(DEAD_CHAT_ID, message, "Markdown")) {
       Serial.println("TELEGRAM Successfully sent");
     }
